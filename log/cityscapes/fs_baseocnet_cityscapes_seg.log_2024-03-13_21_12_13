@@ -1,0 +1,7 @@
+2024-03-13 21:12:13,896 INFO    [main.py, 199] batch size: 2
+2024-03-13 21:12:14,349 INFO    [offset_helper.py, 51] engery/max-distance: 5 engery/min-distance: 0
+2024-03-13 21:12:14,349 INFO    [offset_helper.py, 58] direction/num_classes: 8 scale: 1
+2024-03-13 21:12:14,349 INFO    [offset_helper.py, 65] c4 align axis: False
+2024-03-13 21:12:17,506 INFO    [module_runner.py, 42] BN Type is torchsyncbn.
+2024-03-13 21:12:17,506 INFO    [__init__.py, 17] Using evaluator: StandardEvaluator
+2024-03-13 21:12:17,507 INFO    [running_score.py, 129] 19

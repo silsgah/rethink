@@ -1,0 +1,18 @@
+2024-03-17 16:16:18,535 INFO    [main.py, 199] batch size: 2
+2024-03-17 16:16:18,800 INFO    [offset_helper.py, 51] engery/max-distance: 5 engery/min-distance: 0
+2024-03-17 16:16:18,800 INFO    [offset_helper.py, 58] direction/num_classes: 8 scale: 1
+2024-03-17 16:16:18,800 INFO    [offset_helper.py, 65] c4 align axis: False
+2024-03-17 16:16:20,882 INFO    [module_runner.py, 42] BN Type is torchsyncbn.
+2024-03-17 16:16:20,882 INFO    [__init__.py, 17] Using evaluator: StandardEvaluator
+2024-03-17 16:16:20,883 INFO    [running_score.py, 129] 19
+2024-03-17 16:16:22,073 INFO    [trainer_contrastive.py, 54] Params Group Method: None
+2024-03-17 16:16:22,075 INFO    [optim_scheduler.py, 92] Use lambda_poly policy with default power 0.9
+2024-03-17 16:16:22,076 INFO    [data_loader.py, 128] use the DefaultLoader for train...
+2024-03-17 16:16:22,121 INFO    [default_loader.py, 34] train 100
+2024-03-17 16:16:22,122 INFO    [data_loader.py, 160] use DefaultLoader for val ...
+2024-03-17 16:16:22,164 INFO    [default_loader.py, 34] val 100
+2024-03-17 16:16:22,165 INFO    [loss_manager.py, 63] use loss: pixel_prototype_ce_loss.
+2024-03-17 16:16:22,165 INFO    [loss_proto.py, 56] ignore_index: -1
+2024-03-17 16:16:22,166 INFO    [trainer_contrastive.py, 82] with_contrast: False, warmup_iters: 0, with_memory: False
+2024-03-17 16:16:22,611 INFO    [data_helper.py, 126] Input keys: ['img']
+2024-03-17 16:16:22,612 INFO    [data_helper.py, 127] Target keys: ['labelmap']

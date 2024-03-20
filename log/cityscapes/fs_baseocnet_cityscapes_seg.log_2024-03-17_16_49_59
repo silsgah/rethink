@@ -1,0 +1,23 @@
+2024-03-17 16:49:59,703 INFO    [main.py, 199] batch size: 2
+2024-03-17 16:49:59,962 INFO    [offset_helper.py, 51] engery/max-distance: 5 engery/min-distance: 0
+2024-03-17 16:49:59,963 INFO    [offset_helper.py, 58] direction/num_classes: 8 scale: 1
+2024-03-17 16:49:59,963 INFO    [offset_helper.py, 65] c4 align axis: False
+2024-03-17 16:50:02,480 INFO    [module_runner.py, 42] BN Type is torchsyncbn.
+2024-03-17 16:50:02,481 INFO    [__init__.py, 17] Using evaluator: StandardEvaluator
+2024-03-17 16:50:02,481 INFO    [running_score.py, 129] 19
+2024-03-17 16:50:04,219 INFO    [trainer_contrastive.py, 54] Params Group Method: None
+2024-03-17 16:50:04,222 INFO    [optim_scheduler.py, 92] Use lambda_poly policy with default power 0.9
+2024-03-17 16:50:04,222 INFO    [data_loader.py, 128] use the DefaultLoader for train...
+2024-03-17 16:50:04,265 INFO    [default_loader.py, 34] train 100
+2024-03-17 16:50:04,266 INFO    [data_loader.py, 160] use DefaultLoader for val ...
+2024-03-17 16:50:04,304 INFO    [default_loader.py, 34] val 100
+2024-03-17 16:50:04,304 INFO    [loss_manager.py, 63] use loss: fs_auxce_loss.
+2024-03-17 16:50:04,305 INFO    [trainer_contrastive.py, 82] with_contrast: False, warmup_iters: 0, with_memory: False
+2024-03-17 16:50:04,887 INFO    [data_helper.py, 126] Input keys: ['img']
+2024-03-17 16:50:04,887 INFO    [data_helper.py, 127] Target keys: ['labelmap']
+2024-03-17 16:50:46,707 INFO    [trainer_contrastive.py, 277] Train Epoch: 0	Train Iteration: 10	Time 42.401s / 10iters, (4.240)	Forward Time 6.776s / 10iters, (0.678)	Backward Time 21.556s / 10iters, (2.156)	Loss Time 5.038s / 10iters, (0.504)	Data load 9.031s / 10iters, (0.903131)
+Learning rate = [0.009997749971872421, 0.009997749971872421]	Loss = 1.46542096 (ave = 2.93290777)
+
+2024-03-17 16:51:05,665 INFO    [trainer_contrastive.py, 277] Train Epoch: 0	Train Iteration: 20	Time 18.958s / 10iters, (1.896)	Forward Time 0.349s / 10iters, (0.035)	Backward Time 0.341s / 10iters, (0.034)	Loss Time 5.714s / 10iters, (0.571)	Data load 12.554s / 10iters, (1.255352)
+Learning rate = [0.009995499887479371, 0.009995499887479371]	Loss = 1.75930738 (ave = 2.70675420)
+

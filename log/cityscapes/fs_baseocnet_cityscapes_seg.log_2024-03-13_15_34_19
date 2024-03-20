@@ -1,0 +1,4 @@
+2024-03-13 15:34:19,366 INFO    [main.py, 199] batch size: 2
+2024-03-13 15:34:19,710 INFO    [offset_helper.py, 51] engery/max-distance: 5 engery/min-distance: 0
+2024-03-13 15:34:19,711 INFO    [offset_helper.py, 58] direction/num_classes: 8 scale: 1
+2024-03-13 15:34:19,711 INFO    [offset_helper.py, 65] c4 align axis: False

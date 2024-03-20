@@ -1,0 +1,90 @@
+2024-03-15 23:54:33,795 INFO    [main.py, 199] batch size: 2
+2024-03-15 23:54:34,052 INFO    [offset_helper.py, 51] engery/max-distance: 5 engery/min-distance: 0
+2024-03-15 23:54:34,053 INFO    [offset_helper.py, 58] direction/num_classes: 8 scale: 1
+2024-03-15 23:54:34,053 INFO    [offset_helper.py, 65] c4 align axis: False
+2024-03-15 23:54:37,304 INFO    [module_runner.py, 42] BN Type is torchsyncbn.
+2024-03-15 23:54:37,305 INFO    [__init__.py, 17] Using evaluator: StandardEvaluator
+2024-03-15 23:54:37,306 INFO    [running_score.py, 129] 19
+2024-03-15 23:54:38,713 INFO    [trainer_contrastive.py, 54] Params Group Method: None
+2024-03-15 23:54:38,715 INFO    [optim_scheduler.py, 92] Use lambda_poly policy with default power 0.9
+2024-03-15 23:54:38,716 INFO    [data_loader.py, 128] use the DefaultLoader for train...
+2024-03-15 23:54:38,763 INFO    [default_loader.py, 34] train 100
+2024-03-15 23:54:38,764 INFO    [data_loader.py, 160] use DefaultLoader for val ...
+2024-03-15 23:54:38,814 INFO    [default_loader.py, 34] val 100
+2024-03-15 23:54:38,815 INFO    [loss_manager.py, 63] use loss: pixel_prototype_ce_loss.
+2024-03-15 23:54:38,815 INFO    [loss_proto.py, 56] ignore_index: -1
+2024-03-15 23:54:38,816 INFO    [trainer_contrastive.py, 82] with_contrast: False, warmup_iters: 0, with_memory: False
+2024-03-15 23:54:39,421 INFO    [data_helper.py, 126] Input keys: ['img']
+2024-03-15 23:54:39,422 INFO    [data_helper.py, 127] Target keys: ['labelmap']
+2024-03-15 23:55:09,646 INFO    [trainer_contrastive.py, 274] Train Epoch: 0	Train Iteration: 10	Time 30.829s / 10iters, (3.083)	Forward Time 7.062s / 10iters, (0.706)	Backward Time 9.367s / 10iters, (0.937)	Loss Time 6.134s / 10iters, (0.613)	Data load 8.265s / 10iters, (0.826535)
+Learning rate = [0.009997749971872421, 0.009997749971872421]	Loss = 1.00908959 (ave = 2.05103021)
+
+2024-03-15 23:55:30,950 INFO    [trainer_contrastive.py, 274] Train Epoch: 0	Train Iteration: 20	Time 21.304s / 10iters, (2.130)	Forward Time 0.470s / 10iters, (0.047)	Backward Time 0.238s / 10iters, (0.024)	Loss Time 6.171s / 10iters, (0.617)	Data load 14.425s / 10iters, (1.442512)
+Learning rate = [0.009995499887479371, 0.009995499887479371]	Loss = 1.31708705 (ave = 1.96452131)
+
+2024-03-15 23:55:50,892 INFO    [trainer_contrastive.py, 274] Train Epoch: 0	Train Iteration: 30	Time 19.941s / 10iters, (1.994)	Forward Time 0.487s / 10iters, (0.049)	Backward Time 0.244s / 10iters, (0.024)	Loss Time 6.302s / 10iters, (0.630)	Data load 12.908s / 10iters, (1.290816)
+Learning rate = [0.009993249746805363, 0.009993249746805363]	Loss = 1.16827536 (ave = 1.74043953)
+
+2024-03-15 23:56:10,710 INFO    [trainer_contrastive.py, 274] Train Epoch: 0	Train Iteration: 40	Time 19.819s / 10iters, (1.982)	Forward Time 0.481s / 10iters, (0.048)	Backward Time 0.256s / 10iters, (0.026)	Loss Time 6.590s / 10iters, (0.659)	Data load 12.491s / 10iters, (1.249101)
+Learning rate = [0.009990999549834914, 0.009990999549834914]	Loss = 2.59755802 (ave = 1.51661406)
+
+2024-03-15 23:56:32,526 INFO    [trainer_contrastive.py, 274] Train Epoch: 0	Train Iteration: 50	Time 21.815s / 10iters, (2.182)	Forward Time 0.454s / 10iters, (0.045)	Backward Time 0.260s / 10iters, (0.026)	Loss Time 6.631s / 10iters, (0.663)	Data load 14.470s / 10iters, (1.446954)
+Learning rate = [0.009988749296552522, 0.009988749296552522]	Loss = 1.28534329 (ave = 1.52491549)
+
+2024-03-15 23:56:47,793 INFO    [trainer_contrastive.py, 274] Train Epoch: 1	Train Iteration: 60	Time 15.210s / 10iters, (1.521)	Forward Time 0.418s / 10iters, (0.042)	Backward Time 0.278s / 10iters, (0.028)	Loss Time 6.779s / 10iters, (0.678)	Data load 7.734s / 10iters, (0.773432)
+Learning rate = [0.009986498986942687, 0.009986498986942687]	Loss = 1.88025200 (ave = 1.84914474)
+
+2024-03-15 23:57:02,854 INFO    [trainer_contrastive.py, 274] Train Epoch: 1	Train Iteration: 70	Time 15.061s / 10iters, (1.506)	Forward Time 0.429s / 10iters, (0.043)	Backward Time 0.265s / 10iters, (0.026)	Loss Time 6.684s / 10iters, (0.668)	Data load 7.683s / 10iters, (0.768301)
+Learning rate = [0.009984248620989889, 0.009984248620989889]	Loss = 1.98547482 (ave = 1.54881492)
+
+2024-03-15 23:57:17,861 INFO    [trainer_contrastive.py, 274] Train Epoch: 1	Train Iteration: 80	Time 15.007s / 10iters, (1.501)	Forward Time 0.431s / 10iters, (0.043)	Backward Time 0.248s / 10iters, (0.025)	Loss Time 6.740s / 10iters, (0.674)	Data load 7.587s / 10iters, (0.758739)
+Learning rate = [0.009981998198678612, 0.009981998198678612]	Loss = 0.96774858 (ave = 1.53486148)
+
+2024-03-15 23:57:32,906 INFO    [trainer_contrastive.py, 274] Train Epoch: 1	Train Iteration: 90	Time 15.044s / 10iters, (1.504)	Forward Time 0.561s / 10iters, (0.056)	Backward Time 0.285s / 10iters, (0.028)	Loss Time 6.658s / 10iters, (0.666)	Data load 7.538s / 10iters, (0.753833)
+Learning rate = [0.009979747719993324, 0.009979747719993324]	Loss = 1.37591124 (ave = 1.47048438)
+
+2024-03-15 23:57:47,938 INFO    [trainer_contrastive.py, 274] Train Epoch: 1	Train Iteration: 100	Time 15.032s / 10iters, (1.503)	Forward Time 0.446s / 10iters, (0.045)	Backward Time 0.252s / 10iters, (0.025)	Loss Time 6.638s / 10iters, (0.664)	Data load 7.696s / 10iters, (0.769592)
+Learning rate = [0.009977497184918487, 0.009977497184918487]	Loss = 1.37193561 (ave = 1.41397717)
+
+2024-03-15 23:58:02,994 INFO    [trainer_contrastive.py, 274] Train Epoch: 2	Train Iteration: 110	Time 15.017s / 10iters, (1.502)	Forward Time 0.429s / 10iters, (0.043)	Backward Time 0.255s / 10iters, (0.026)	Loss Time 6.594s / 10iters, (0.659)	Data load 7.739s / 10iters, (0.773932)
+Learning rate = [0.009975246593438554, 0.009975246593438554]	Loss = 1.05286598 (ave = 1.80339451)
+
+2024-03-15 23:58:18,205 INFO    [trainer_contrastive.py, 274] Train Epoch: 2	Train Iteration: 120	Time 15.212s / 10iters, (1.521)	Forward Time 0.329s / 10iters, (0.033)	Backward Time 0.242s / 10iters, (0.024)	Loss Time 6.915s / 10iters, (0.692)	Data load 7.725s / 10iters, (0.772523)
+Learning rate = [0.009972995945537971, 0.009972995945537971]	Loss = 1.62815070 (ave = 1.61866845)
+
+2024-03-15 23:58:33,307 INFO    [trainer_contrastive.py, 274] Train Epoch: 2	Train Iteration: 130	Time 15.101s / 10iters, (1.510)	Forward Time 0.329s / 10iters, (0.033)	Backward Time 0.260s / 10iters, (0.026)	Loss Time 6.811s / 10iters, (0.681)	Data load 7.701s / 10iters, (0.770066)
+Learning rate = [0.009970745241201175, 0.009970745241201175]	Loss = 1.73095441 (ave = 1.51486207)
+
+2024-03-15 23:58:48,459 INFO    [trainer_contrastive.py, 274] Train Epoch: 2	Train Iteration: 140	Time 15.153s / 10iters, (1.515)	Forward Time 0.322s / 10iters, (0.032)	Backward Time 0.271s / 10iters, (0.027)	Loss Time 6.882s / 10iters, (0.688)	Data load 7.677s / 10iters, (0.767725)
+Learning rate = [0.009968494480412598, 0.009968494480412598]	Loss = 1.40856791 (ave = 1.59259142)
+
+2024-03-15 23:59:03,561 INFO    [trainer_contrastive.py, 274] Train Epoch: 2	Train Iteration: 150	Time 15.102s / 10iters, (1.510)	Forward Time 0.394s / 10iters, (0.039)	Backward Time 0.275s / 10iters, (0.027)	Loss Time 6.776s / 10iters, (0.678)	Data load 7.658s / 10iters, (0.765753)
+Learning rate = [0.009966243663156658, 0.009966243663156658]	Loss = 0.90951419 (ave = 1.53012187)
+
+2024-03-15 23:59:18,695 INFO    [trainer_contrastive.py, 274] Train Epoch: 3	Train Iteration: 160	Time 15.081s / 10iters, (1.508)	Forward Time 0.520s / 10iters, (0.052)	Backward Time 0.329s / 10iters, (0.033)	Loss Time 6.646s / 10iters, (0.665)	Data load 7.586s / 10iters, (0.758631)
+Learning rate = [0.00996399278941777, 0.00996399278941777]	Loss = 1.83872449 (ave = 1.83818260)
+
+2024-03-15 23:59:33,738 INFO    [trainer_contrastive.py, 274] Train Epoch: 3	Train Iteration: 170	Time 15.043s / 10iters, (1.504)	Forward Time 0.482s / 10iters, (0.048)	Backward Time 0.245s / 10iters, (0.025)	Loss Time 6.648s / 10iters, (0.665)	Data load 7.668s / 10iters, (0.766800)
+Learning rate = [0.009961741859180336, 0.009961741859180336]	Loss = 0.97082472 (ave = 1.58113730)
+
+2024-03-15 23:59:48,845 INFO    [trainer_contrastive.py, 274] Train Epoch: 3	Train Iteration: 180	Time 15.107s / 10iters, (1.511)	Forward Time 0.343s / 10iters, (0.034)	Backward Time 0.249s / 10iters, (0.025)	Loss Time 6.820s / 10iters, (0.682)	Data load 7.694s / 10iters, (0.769373)
+Learning rate = [0.009959490872428754, 0.009959490872428754]	Loss = 1.23449433 (ave = 1.21769606)
+
+2024-03-16 00:00:03,920 INFO    [trainer_contrastive.py, 274] Train Epoch: 3	Train Iteration: 190	Time 15.075s / 10iters, (1.507)	Forward Time 0.341s / 10iters, (0.034)	Backward Time 0.263s / 10iters, (0.026)	Loss Time 6.763s / 10iters, (0.676)	Data load 7.708s / 10iters, (0.770750)
+Learning rate = [0.009957239829147412, 0.009957239829147412]	Loss = 1.25758731 (ave = 1.57650093)
+
+2024-03-16 00:00:18,964 INFO    [trainer_contrastive.py, 274] Train Epoch: 3	Train Iteration: 200	Time 15.044s / 10iters, (1.504)	Forward Time 0.420s / 10iters, (0.042)	Backward Time 0.255s / 10iters, (0.025)	Loss Time 6.658s / 10iters, (0.666)	Data load 7.711s / 10iters, (0.771121)
+Learning rate = [0.00995498872932069, 0.00995498872932069]	Loss = 1.76525438 (ave = 1.73012377)
+
+2024-03-16 00:00:34,180 INFO    [trainer_contrastive.py, 274] Train Epoch: 4	Train Iteration: 210	Time 15.179s / 10iters, (1.518)	Forward Time 0.415s / 10iters, (0.041)	Backward Time 0.252s / 10iters, (0.025)	Loss Time 6.839s / 10iters, (0.684)	Data load 7.673s / 10iters, (0.767311)
+Learning rate = [0.009952737572932961, 0.009952737572932961]	Loss = 0.76674092 (ave = 1.41478380)
+
+2024-03-16 00:00:49,293 INFO    [trainer_contrastive.py, 274] Train Epoch: 4	Train Iteration: 220	Time 15.113s / 10iters, (1.511)	Forward Time 0.390s / 10iters, (0.039)	Backward Time 0.242s / 10iters, (0.024)	Loss Time 6.716s / 10iters, (0.672)	Data load 7.765s / 10iters, (0.776518)
+Learning rate = [0.009950486359968588, 0.009950486359968588]	Loss = 2.77199626 (ave = 1.48856159)
+
+2024-03-16 00:01:04,374 INFO    [trainer_contrastive.py, 274] Train Epoch: 4	Train Iteration: 230	Time 15.081s / 10iters, (1.508)	Forward Time 0.327s / 10iters, (0.033)	Backward Time 0.254s / 10iters, (0.025)	Loss Time 6.776s / 10iters, (0.678)	Data load 7.724s / 10iters, (0.772438)
+Learning rate = [0.009948235090411922, 0.009948235090411922]	Loss = 1.33781147 (ave = 1.25903881)
+
+2024-03-16 00:01:19,783 INFO    [trainer_contrastive.py, 274] Train Epoch: 4	Train Iteration: 240	Time 15.410s / 10iters, (1.541)	Forward Time 0.515s / 10iters, (0.052)	Backward Time 0.304s / 10iters, (0.030)	Loss Time 6.914s / 10iters, (0.691)	Data load 7.676s / 10iters, (0.767581)
+Learning rate = [0.009945983764247315, 0.009945983764247315]	Loss = 0.93213290 (ave = 1.46277595)
+
