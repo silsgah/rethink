@@ -1,3 +1,12 @@
+##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+## Created by: Donny You, RainbowSecret, JingyiXie
+## Microsoft Research
+## yuyua@microsoft.com
+## Copyright (c) 2019
+##
+## This source code is licensed under the MIT-style license found in the
+## LICENSE file in the root directory of this source tree 
+##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 import pdb
 import torch
@@ -36,7 +45,7 @@ class DataLoader(object):
             trans.ReLabel(255, -1), ])
 
     def get_dataloader_sampler(self, klass, split, dataset):
-
+        print("get dataloader sampler section..........")
         from lib.datasets.loader.multi_dataset_loader import MultiDatasetLoader, MultiDatasetTrainingSampler
 
         root_dir = self.configer.get('data', 'data_dir')
@@ -97,7 +106,7 @@ class DataLoader(object):
             """
             Log.info('use distance transform offset loader for train...')
             klass = DTOffsetLoader
-            print("SILAS TRAIN FIRST IF SECTION")
+
         elif self.configer.exists('train', 'loader') and \
                 (self.configer.get('train', 'loader') == 'ade20k'
                  or self.configer.get('train', 'loader') == 'pascal_context'
@@ -110,7 +119,6 @@ class DataLoader(object):
             """
             Log.info('use ADE20KLoader (diverse input shape) for train...')
             klass = ADE20KLoader
-            print("SILAS TRAIN SECOOND IF SECTION ADE20KLoader")
         else:
             """
             Default manner:
