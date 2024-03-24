@@ -53,7 +53,7 @@ class Trainer(object):
     def _init_model(self):
         self.seg_net = self.model_manager.semantic_segmentor()
         self.seg_net = self.module_runner.load_net(self.seg_net)
-
+        print(self.seg_net)
         Log.info('Params Group Method: {}'.format(self.configer.get('optim', 'group_method')))
         if self.configer.get('optim', 'group_method') == 'decay':
             params_group = self.group_weight(self.seg_net)

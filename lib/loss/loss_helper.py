@@ -302,6 +302,7 @@ class FSAuxCELoss(nn.Module):
         self.ce_loss = FSCELoss(self.configer)
 
     def forward(self, inputs, targets, **kwargs):
+        print("LOSS INPUT", type(inputs))
         aux_out, seg_out = inputs
         seg_loss = self.ce_loss(seg_out, targets)
         aux_loss = self.ce_loss(aux_out, targets)

@@ -104,14 +104,11 @@ class PixelPrototypeCELoss(nn.Module, ABC):
           print("Object is a dictionary")
         else:
           print("Object is of an unknown type")
-        print((preds[0].shape))
-        print((preds[1].shape))
-        original_shape0 = (preds[0])
-        new_shape0 = original_shape0[2:]
-        original_shape1 = (preds[1])
-        new_shape1 = original_shape1[2:]
-        seg = torch.cat((new_shape1, new_shape0), dim=0)
-        # seg = torch.tensor(preds)
+
+        # concatenated_tensor = torch.cat([preds[0],preds[1]], dim=0) 
+        aux_out, seg_out = preds
+        print(aux_out)
+        seg = seg_out
         pred = F.interpolate(input=seg, size=(h, w), mode='bilinear', align_corners=True)
         loss = self.seg_criterion(pred, target)
         return loss

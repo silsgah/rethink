@@ -14,7 +14,7 @@ from lib.utils.tools.logger import Logger as Log
 PIL_INTER_DICT = {
     'nearest': Image.NEAREST,
     'linear': Image.BILINEAR,
-    'cubic': Image.CUBIC
+    'cubic': Image.BICUBIC
 }
 
 CV2_INTER_DICT = {

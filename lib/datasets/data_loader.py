@@ -1,12 +1,3 @@
-##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-## Created by: Donny You, RainbowSecret, JingyiXie
-## Microsoft Research
-## yuyua@microsoft.com
-## Copyright (c) 2019
-##
-## This source code is licensed under the MIT-style license found in the
-## LICENSE file in the root directory of this source tree 
-##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 import pdb
 import torch
@@ -16,7 +7,7 @@ import lib.datasets.tools.transforms as trans
 import lib.datasets.tools.cv2_aug_transforms as cv2_aug_trans
 import lib.datasets.tools.pil_aug_transforms as pil_aug_trans
 from lib.datasets.loader.default_loader import DefaultLoader, CSDataTestLoader
-from lib.datasets.loader.ade20k_loader import ADE20KLoader
+# from lib.datasets.loader.ade20k_loader import ADE20KLoader
 from lib.datasets.loader.lip_loader import LipLoader
 from lib.datasets.loader.offset_loader import DTOffsetLoader
 from lib.datasets.tools.collate import collate
@@ -106,7 +97,7 @@ class DataLoader(object):
             """
             Log.info('use distance transform offset loader for train...')
             klass = DTOffsetLoader
-
+            print("SILAS TRAIN FIRST IF SECTION")
         elif self.configer.exists('train', 'loader') and \
                 (self.configer.get('train', 'loader') == 'ade20k'
                  or self.configer.get('train', 'loader') == 'pascal_context'
@@ -119,6 +110,7 @@ class DataLoader(object):
             """
             Log.info('use ADE20KLoader (diverse input shape) for train...')
             klass = ADE20KLoader
+            print("SILAS TRAIN SECOOND IF SECTION ADE20KLoader")
         else:
             """
             Default manner:

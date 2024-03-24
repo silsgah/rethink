@@ -199,12 +199,14 @@ class Trainer(object):
                 )
 
             (inputs, targets), batch_size = self.data_helper.prepare_data(data_dict)
+            print("input shape is", type(inputs))
             self.data_time.update(time.time() - start_time)
 
             foward_start_time = time.time()
 
             with_embed = True if self.configer.get('iters') >= self.contrast_warmup_iters else False
             if self.with_contrast is True:
+                print("WE FIRST CONTRAST SECTION.....")
                 if self.with_memory is True:
                     outputs = self.seg_net(*inputs, targets, with_embed=with_embed)
 
@@ -215,8 +217,9 @@ class Trainer(object):
                 else:
                     outputs = self.seg_net(*inputs, with_embed=with_embed)
             else:
+                print("outside contrast section.....", type(inputs))
                 outputs = self.seg_net(*inputs)
-
+                print("SHAPE AFTER HERE....", type(outputs))
             self.foward_time.update(time.time() - foward_start_time)
 
             loss_start_time = time.time()
@@ -234,14 +237,23 @@ class Trainer(object):
                         reduced_inp = inp
                         dist.reduce(reduced_inp, dst=0)
                     return reduced_inp
-
+                print("OUTPUT TYPE", type(outputs))
                 loss = self.pixel_loss(outputs, targets, with_embed=with_embed)
                 backward_loss = loss
                 display_loss = reduce_tensor(backward_loss) / get_world_size()
             else:
-                print("INPUT DIMENSION", len(outputs))
-                obj_type = type(outputs)
-                print(obj_type)
+                print("INPUT DIMENSION", len(outputs), type(outputs[0]))
+                print("TARGET DIMENSION", len(targets), type(targets))
+                # obj_type = type(outputs)
+                # print(obj_type)
+                # if outputs[0].shape[1] == outputs[1].shape[0]:
+                #     print("same shapes")
+                # else:
+                #     print(outputs[0].shape[1])
+                #     print("not same shape")
+                outputs = (outputs[0], outputs[1])
+                combined_tensor = torch.cat(outputs, dim=0)
+                print(type(combined_tensor))
                 backward_loss = display_loss = self.pixel_loss(outputs, targets)
                 print("loss value", backward_loss)
             if self.with_memory and 'key' in outputs and 'lb_key' in outputs:

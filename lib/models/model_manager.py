@@ -24,7 +24,7 @@
 # from lib.models.nets.hrnet import HRNet_W48_OCR, HRNet_W48_OCR_B, HRNet_W48_OCR_B_HA, HRNet_W48_OCR_CONTRAST, HRNet_W48_MEM, HRNet_W48_Proto
 
 # OCNet
-from lib.models.nets.ocnet import BaseOCNet, AspOCNet
+from lib.models.nets.ocnet import BaseOCNet
 
 # ISA Net
 # from lib.models.nets.isanet import ISANet

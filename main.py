@@ -1,24 +1,17 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
-import os
-import time
 import argparse
+import json
+import os
 import random
-
+import time
+import pdb
 import torch
 import torch.backends.cudnn as cudnn
-
-from lib.utils.tools.configer import Configer
 from lib.utils.tools.logger import Logger as Log
+from lib.utils.tools.configer import Configer
 
 
 def str2bool(v):
-    """ Usage:
-    parser.add_argument('--pretrained', type=str2bool, nargs='?', const=True,
-                        dest='pretrained', help='Whether to use pretrained models.')
-    """
+
     if v.lower() in ('yes', 'true', 't', 'y', '1'):
         return True
     elif v.lower() in ('no', 'false', 'f', 'n', '0'):
@@ -91,8 +84,6 @@ if __name__ == "__main__":
                         dest='network:resume_strict', help='Fully match keys or not.')
     parser.add_argument('--resume_continue', type=str2bool, nargs='?', default=False,
                         dest='network:resume_continue', help='Whether to continue training.')
-    parser.add_argument('--finetune', type=str2bool, nargs='?', default=False,
-                        dest='network:finetune', help='Whether to start finetune.')
     parser.add_argument('--resume_eval_train', type=str2bool, nargs='?', default=True,
                         dest='network:resume_train', help='Whether to validate the training set  during resume.')
     parser.add_argument('--resume_eval_val', type=str2bool, nargs='?', default=True,
@@ -195,8 +186,6 @@ if __name__ == "__main__":
              log_file=configer.get('logging', 'log_file'),
              log_format=configer.get('logging', 'log_format'),
              rewrite=configer.get('logging', 'rewrite'))
-
-    Log.info('batch size: {}'.format(configer.get('train', 'batch_size')))
 
     model = None
     if configer.get('method') == 'fcn_segmentor':
