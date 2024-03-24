@@ -73,7 +73,6 @@ class DataLoader(object):
         if split == 'train':
             if is_distributed() and multi_dataset:
                 raise RuntimeError('Currently multi dataset doesn\'t support distributed.')
-
             if is_distributed():
                 sampler = torch.utils.data.distributed.DistributedSampler(loader)
             elif multi_dataset:

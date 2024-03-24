@@ -1,14 +1,9 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
 import math
 import torch.nn as nn
 from collections import OrderedDict
 from functools import partial
 
 from lib.models.tools.module_helper import ModuleHelper 
-
 
 
 class GlobalAvgPool2d(nn.Module):
