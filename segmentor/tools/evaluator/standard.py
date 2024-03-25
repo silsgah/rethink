@@ -49,7 +49,6 @@ def _parse_output_spec(spec):
 
 
 class StandardEvaluator(_BaseEvaluator):
-
     def _output_spec(self):
         if self.configer.conditions.pred_dt_offset:
             default_spec = 'mask, dir'

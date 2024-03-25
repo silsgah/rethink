@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from lib.loss.loss_helper import FSAuxCELoss, FSAuxRMILoss, FSCELoss
+from lib.loss.loss_helper import FSAuxRMILoss, FSCELoss
 from lib.utils.tools.logger import Logger as Log
 
 
@@ -86,25 +86,6 @@ class PixelPrototypeCELoss(nn.Module, ABC):
             loss = self.seg_criterion(pred, target)
             return loss + self.loss_ppc_weight * loss_ppc + self.loss_ppd_weight * loss_ppd
             
-        if torch.is_tensor(preds):
-          print("The object is a PyTorch tensor.")
-        else:
-          print("The object is not a PyTorch tensor.")
-        
-        obj_type = type(preds)
-        print(obj_type)
-        
-
-        # Check if the type matches a specific type
-        if obj_type == list:
-          print("Object is a list")
-        elif obj_type == tuple:
-          print("Object is a tuple")
-        elif obj_type == dict:
-          print("Object is a dictionary")
-        else:
-          print("Object is of an unknown type")
-
         # concatenated_tensor = torch.cat([preds[0],preds[1]], dim=0) 
         aux_out, seg_out = preds
         print(aux_out)
