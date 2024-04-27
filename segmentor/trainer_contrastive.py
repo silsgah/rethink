@@ -18,7 +18,8 @@ from segmentor.tools.evaluator import get_evaluator
 from segmentor.tools.module_runner import ModuleRunner
 from segmentor.tools.optim_scheduler import OptimScheduler
 
-
+# !git clone https://github.com/silsgah/rethink.git
+# !git clone https://github.com/silsgah/lessdata.git
 class Trainer(object):
     def __init__(self, configer):
         self.configer = configer
@@ -454,3 +455,25 @@ class Trainer(object):
 
 if __name__ == "__main__":
     pass
+
+
+# Traceback (most recent call last):
+#   File "/content/rethink/main.py", line 206, in <module>
+#     model.train()
+#   File "/content/rethink/segmentor/trainer_contrastive.py", line 437, in train
+#     self.__train()
+#   File "/content/rethink/segmentor/trainer_contrastive.py", line 319, in __train
+#     self.__val()
+#   File "/content/rethink/segmentor/trainer_contrastive.py", line 380, in __val
+#     outputs = self.seg_net(*inputs, is_eval=True)
+#   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+#     return self._call_impl(*args, **kwargs)
+#   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+#     return forward_call(*args, **kwargs)
+#   File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/data_parallel.py", line 183, in forward
+#     return self.module(*inputs[0], **module_kwargs[0])
+#   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+#     return self._call_impl(*args, **kwargs)
+#   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+#     return forward_call(*args, **kwargs)
+# TypeError: BaseOCNet.forward() got an unexpected keyword argument 'is_eval'
