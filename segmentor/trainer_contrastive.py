@@ -379,7 +379,6 @@ class Trainer(object):
 
                 else:
                     outputs = self.seg_net(*inputs, is_eval=True)
-
                     try:
                         loss = self.pixel_loss(outputs, targets)
                     except AssertionError as e:
