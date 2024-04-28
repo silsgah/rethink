@@ -384,7 +384,7 @@ class Trainer(object):
                     batch_time=self.batch_time, loss=self.val_losses))
             self.evaluator.print_scores()
 
-        self.batch_time.reset()
+        # self.batch_time.reset()
         self.val_losses.reset()
         self.evaluator.reset()
         self.seg_net.train()
