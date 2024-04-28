@@ -56,9 +56,7 @@ class BaseOCNet(nn.Module):
         x = self.oc_module_pre(x[-1])
         x = self.oc_module(x)
         x = self.cls(x)
-        print("MODEL INSIDE", type(x))
         x_dsn = F.interpolate(x_dsn, size=(x_.size(2), x_.size(3)), mode="bilinear", align_corners=True)
         x = F.interpolate(x, size=(x_.size(2), x_.size(3)), mode="bilinear", align_corners=True)
-        print("MODEL PRODUCING OUT", type(x))
         return x_dsn, x
 

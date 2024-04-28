@@ -84,7 +84,6 @@ class ModelManager(object):
         self.configer = configer
 
     def semantic_segmentor(self):
-        print("MODEL NAME....", self.configer.get('network', 'model_name'))
         model_name = self.configer.get('network', 'model_name')
 
         if model_name not in SEG_MODEL_DICT:

@@ -317,6 +317,8 @@ class Trainer(object):
                 break
 
             if self.configer.get('iters') % self.configer.get('solver', 'test_interval') == 0:
+                print(f'{self.configer.get('iters')}')
+                print(f'{self.configer.get('solver', 'test_interval')}')
                 self.__val()
 
         self.configer.plus_one('epoch')

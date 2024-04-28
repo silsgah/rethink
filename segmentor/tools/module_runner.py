@@ -74,12 +74,9 @@ class ModuleRunner(object):
     def load_net(self, net):
         net = self.to_device(net)
         net = self._make_parallel(net)
-        print("This is loading the network......")
         if not is_distributed():
-            print("This is inside the distribution the network......")
             net = net.to(torch.device('cpu' if self.configer.get('gpu') is None else 'cuda'))
 
-        print("This is loading the networkNOT NOT......")
         net.float()
         if self.configer.get('network', 'resume') is not None:
             Log.info('Loading checkpoint from {}...'.format(self.configer.get('network', 'resume')))
