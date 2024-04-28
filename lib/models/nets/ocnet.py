@@ -50,7 +50,9 @@ class BaseOCNet(nn.Module):
             nn.Conv2d(512, self.num_classes, kernel_size=1, stride=1, padding=0, bias=True)
         )
 
-    def forward(self, x_):
+    def forward(self, x_,**kwargs):
+         # Extract is_eval from kwargs
+        is_eval = kwargs.pop('is_eval', False)
         x = self.backbone(x_)
         x_dsn = self.dsn(x[-2])
         x = self.oc_module_pre(x[-1])

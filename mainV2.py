@@ -7,7 +7,13 @@ import torch.backends.cudnn as cudnn
 from lib.utils.tools.logger import Logger as Log
 from lib.utils.tools.configer import Configer
 
-
+def str2bool(v):
+    if v.lower() in ('yes', 'true', 't', 'y', '1'):
+        return True
+    elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+        return False
+    else:
+        raise argparse.ArgumentTypeError('Unsupported value encountered.')
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -17,17 +23,27 @@ if __name__ == "__main__":
                         dest='phase', help='The phase of module.')
     parser.add_argument('--gpu', default=[0, 1, 2, 3], nargs='+', type=int,
                         dest='gpu', help='The gpu list used.')
+     # ***********  Params for logging.  **********
+    parser.add_argument('--logfile_level', default=None, type=str,
+                        dest='logging:logfile_level', help='To set the log level to files.')
+    parser.add_argument('--stdout_level', default=None, type=str,
+                        dest='logging:stdout_level', help='To set the level to print to screen.')
+    parser.add_argument('--log_file', default=None, type=str,
+                        dest='logging:log_file', help='The path of log files.')
+    parser.add_argument('--rewrite', type=str2bool, nargs='?', default=True,
+                        dest='logging:rewrite', help='Whether to rewrite files.')
+    parser.add_argument('--log_to_file', type=str2bool, nargs='?', default=True,
+                        dest='logging:log_to_file', help='Whether to write logging into files.')
 
-   
+    parser.add_argument('REMAIN', nargs='*')
+
 
     args_parser = parser.parse_args()
-
-    if args_parser.seed is not None:
-        random.seed(args_parser.seed)
-        torch.manual_seed(args_parser.seed)
+    random.seed(304)
+    torch.manual_seed(304)
 
     cudnn.enabled = True
-    cudnn.benchmark = args_parser.cudnn
+    cudnn.benchmark = True
 
     configer = Configer(args_parser=args_parser)
     data_dir = configer.get('data', 'data_dir')

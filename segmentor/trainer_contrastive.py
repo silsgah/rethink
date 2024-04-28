@@ -23,11 +23,11 @@ from segmentor.tools.optim_scheduler import OptimScheduler
 class Trainer(object):
     def __init__(self, configer):
         self.configer = configer
-        self.batch_time = AverageMeter()
-        self.foward_time = AverageMeter()
-        self.backward_time = AverageMeter()
-        self.loss_time = AverageMeter()
-        self.data_time = AverageMeter()
+        # self.batch_time = AverageMeter()
+        # self.foward_time = AverageMeter()
+        # self.backward_time = AverageMeter()
+        # self.loss_time = AverageMeter()
+        # self.data_time = AverageMeter()
         self.train_losses = AverageMeter()
         self.val_losses = AverageMeter()
         self.seg_visualizer = SegVisualizer(configer)
@@ -185,9 +185,9 @@ class Trainer(object):
                 )
 
             (inputs, targets), batch_size = self.data_helper.prepare_data(data_dict)
-            self.data_time.update(time.time() - start_time)
+            # self.data_time.update(time.time() - start_time)
 
-            foward_start_time = time.time()
+            # foward_start_time = time.time()
 
             with_embed = True if self.configer.get('iters') >= self.contrast_warmup_iters else False
             if self.with_contrast is True:
@@ -204,7 +204,7 @@ class Trainer(object):
                 print("outside contrast section.....", type(inputs))
                 outputs = self.seg_net(*inputs)
                 print("SHAPE AFTER HERE....", type(outputs))
-            self.foward_time.update(time.time() - foward_start_time)
+            # self.foward_time.update(time.time() - foward_start_time)
 
             loss_start_time = time.time()
             if is_distributed():
@@ -236,7 +236,7 @@ class Trainer(object):
                                           pixel_queue_ptr=self.seg_net.module.pixel_queue_ptr)
 
             self.train_losses.update(display_loss.item(), batch_size)
-            self.loss_time.update(time.time() - loss_start_time)
+            # self.loss_time.update(time.time() - loss_start_time)
 
             backward_start_time = time.time()
             self.optimizer.zero_grad()
@@ -248,10 +248,10 @@ class Trainer(object):
             else:
                 self.scheduler.step()
                 
-            self.backward_time.update(time.time() - backward_start_time)
+            # self.backward_time.update(time.time() - backward_start_time)
 
             # Update the vars of the train phase.
-            self.batch_time.update(time.time() - start_time)
+            # self.batch_time.update(time.time() - start_time)
             start_time = time.time()
             self.configer.plus_one('iters')
 
@@ -270,11 +270,11 @@ class Trainer(object):
                     self.module_runner.get_lr(self.optimizer), batch_time=self.batch_time,
                     foward_time=self.foward_time, backward_time=self.backward_time, loss_time=self.loss_time,
                     data_time=self.data_time, loss=self.train_losses))
-                self.batch_time.reset()
-                self.foward_time.reset()
-                self.backward_time.reset()
-                self.loss_time.reset()
-                self.data_time.reset()
+                # self.batch_time.reset()
+                # self.foward_time.reset()
+                # self.backward_time.reset()
+                # self.loss_time.reset()
+                # self.data_time.reset()
                 self.train_losses.reset()
 
             # save checkpoints for swa
@@ -288,8 +288,8 @@ class Trainer(object):
                 break
 
             if self.configer.get('iters') % self.configer.get('solver', 'test_interval') == 0:
-                print(f'{self.configer.get('iters')}')
-                print(f'{self.configer.get('solver', 'test_interval')}')
+                print(f"{self.configer.get('iters')}")
+                print(f"{self.configer.get('solver', 'test_interval')}")
                 self.__val()
 
         self.configer.plus_one('epoch')
@@ -366,7 +366,7 @@ class Trainer(object):
                     else:
                         self.evaluator.update_score(outputs, data_dict['meta'])
 
-            self.batch_time.update(time.time() - start_time)
+            # self.batch_time.update(time.time() - start_time)
             start_time = time.time()
 
         self.evaluator.update_performance()
