@@ -51,7 +51,6 @@ class Trainer(object):
     def _init_model(self):
         self.seg_net = self.model_manager.semantic_segmentor()
         self.seg_net = self.module_runner.load_net(self.seg_net)
-
         Log.info('Params Group Method: {}'.format(self.configer.get('optim', 'group_method')))
         if self.configer.get('optim', 'group_method') == 'decay':
             params_group = self.group_weight(self.seg_net)
@@ -82,20 +81,6 @@ class Trainer(object):
 
         Log.info("with_contrast: {}, warmup_iters: {}, with_memory: {}".format(
             self.with_contrast, self.contrast_warmup_iters, self.with_memory))
-
-        # self.experiment = keepsake.init(
-        #     path='keepsake',
-        #     params={"[HP] learning_rate": self.configer.get('lr', 'base_lr'),
-        #             "[HP] train_bs": self.configer.get('train', 'batch_size'),
-        #             "[NET] loss": self.configer.get('loss', 'loss_type'),
-        #             "[NET] backbone": self.configer.get('network', 'backbone'),
-        #             "[NET] model_name": self.configer.get('network', 'model_name'),
-        #             "[CONTRAST] proj_dim": self.configer.get('contrast', 'proj_dim'),
-        #             "[CONTRAST] temperature": self.configer.get('contrast', 'temperature'),
-        #             "[CONTRAST] max_samples": self.configer.get('contrast', 'max_samples'),
-        #             "[CONTRAST] warmup_iters": self.configer.get('contrast', 'warmup_iters'),
-        #             "[CONTRAST] loss_weight": self.configer.get('contrast', 'loss_weight')}
-        # )
 
     def _dequeue_and_enqueue(self, keys, labels,
                              segment_queue, segment_queue_ptr,
@@ -200,14 +185,12 @@ class Trainer(object):
                 )
 
             (inputs, targets), batch_size = self.data_helper.prepare_data(data_dict)
-            print("input shape is", type(inputs))
             self.data_time.update(time.time() - start_time)
 
             foward_start_time = time.time()
 
             with_embed = True if self.configer.get('iters') >= self.contrast_warmup_iters else False
             if self.with_contrast is True:
-                print("WE FIRST CONTRAST SECTION.....")
                 if self.with_memory is True:
                     outputs = self.seg_net(*inputs, targets, with_embed=with_embed)
 
@@ -238,25 +221,13 @@ class Trainer(object):
                         reduced_inp = inp
                         dist.reduce(reduced_inp, dst=0)
                     return reduced_inp
-                print("OUTPUT TYPE", type(outputs))
                 loss = self.pixel_loss(outputs, targets, with_embed=with_embed)
                 backward_loss = loss
                 display_loss = reduce_tensor(backward_loss) / get_world_size()
             else:
-                print("INPUT DIMENSION", len(outputs), type(outputs[0]))
-                print("TARGET DIMENSION", len(targets), type(targets))
-                # obj_type = type(outputs)
-                # print(obj_type)
-                # if outputs[0].shape[1] == outputs[1].shape[0]:
-                #     print("same shapes")
-                # else:
-                #     print(outputs[0].shape[1])
-                #     print("not same shape")
                 outputs = (outputs[0], outputs[1])
                 combined_tensor = torch.cat(outputs, dim=0)
-                print(type(combined_tensor))
                 backward_loss = display_loss = self.pixel_loss(outputs, targets)
-                print("loss value", backward_loss)
             if self.with_memory and 'key' in outputs and 'lb_key' in outputs:
                 self._dequeue_and_enqueue(outputs['key'], outputs['lb_key'],
                                           segment_queue=self.seg_net.module.segment_queue,
