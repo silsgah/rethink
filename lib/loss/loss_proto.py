@@ -20,7 +20,6 @@ class PPC(nn.Module, ABC):
 
     def forward(self, contrast_logits, contrast_target):
         loss_ppc = F.cross_entropy(contrast_logits, contrast_target.long(), ignore_index=self.ignore_label)
-        print("SILAS PPC LOSS SECTION.......")
         return loss_ppc
 
 
@@ -40,7 +39,6 @@ class PPD(nn.Module, ABC):
 
         logits = torch.gather(contrast_logits, 1, contrast_target[:, None].long())
         loss_ppd = (1 - logits).pow(2).mean()
-        print("SILAS PPD LOSS SECTION.......")
         return loss_ppd
 
 
@@ -88,7 +86,6 @@ class PixelPrototypeCELoss(nn.Module, ABC):
             
         # concatenated_tensor = torch.cat([preds[0],preds[1]], dim=0) 
         aux_out, seg_out = preds
-        print(aux_out)
         seg = seg_out
         pred = F.interpolate(input=seg, size=(h, w), mode='bilinear', align_corners=True)
         loss = self.seg_criterion(pred, target)
