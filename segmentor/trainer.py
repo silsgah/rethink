@@ -163,11 +163,11 @@ class Trainer(object):
             self.train_loader.sampler.set_epoch(self.configer.get('epoch'))
 
         for i, data_dict in enumerate(self.train_loader):
-            self.optimizer.zero_grad()
-            if self.configer.get('lr', 'metric') == 'iters':
-                self.scheduler.step(self.configer.get('iters'))
-            else:
-                self.scheduler.step(self.configer.get('epoch'))
+            # self.optimizer.zero_grad()
+            # if self.configer.get('lr', 'metric') == 'iters':
+            #     self.scheduler.step(self.configer.get('iters'))
+            # else:
+            #     self.scheduler.step(self.configer.get('epoch'))
 
             if self.configer.get('lr', 'is_warm'):
                 self.module_runner.warm_lr(
@@ -184,10 +184,16 @@ class Trainer(object):
                     outputs = self.seg_net(*inputs)
                 else:
                     pretrain_prototype = True if self.configer.get('iters') < self. configer.get('protoseg', 'warmup_iters') else False
-                    outputs = self.seg_net(*inputs, gt_semantic_seg=targets[:, None, ...],
-                                           pretrain_prototype=pretrain_prototype)
+                    outputs = self.seg_net(*inputs)
+                    # outputs = self.seg_net(*inputs, gt_semantic_seg=targets[:, None, ...],
+                    #                        pretrain_prototype=pretrain_prototype)
             self.foward_time.update(time.time() - foward_start_time)
 
+            # Perform the forward pass without the gt_semantic_seg argument
+            # outputs = self.seg_net(*inputs, pretrain_prototype=pretrain_prototype)
+
+            # # Use gt_semantic_seg elsewhere as required, for example in loss calculation
+             # loss = some_loss_function(outputs, targets[:, None, ...])
             loss_start_time = time.time()
             if is_distributed():
                 import torch.distributed as dist
@@ -209,7 +215,9 @@ class Trainer(object):
                     backward_loss = loss
                     display_loss = reduce_tensor(backward_loss) / get_world_size()
             else:
-                backward_loss = display_loss = self.pixel_loss(outputs, targets)
+                with torch.autocast("cuda"):
+                    backward_loss = display_loss = self.pixel_loss(outputs, targets)
+                # backward_loss = display_loss = self.pixel_loss(outputs, targets)
 
             self.train_losses.update(display_loss.item(), batch_size)
             self.loss_time.update(time.time() - loss_start_time)
@@ -218,8 +226,18 @@ class Trainer(object):
 
             # backward_loss.backward()
             # self.optimizer.step()
+            #this section added
+            self.optimizer.zero_grad()
+            self.optimizer.step()
+            #section ended
             scaler.scale(backward_loss).backward()
             scaler.step(self.optimizer)
+
+            if self.configer.get('lr', 'metric') == 'iters':
+                self.scheduler.step()
+            else:
+                self.scheduler.step()
+            
             scaler.update()
 
             self.backward_time.update(time.time() - backward_start_time)
