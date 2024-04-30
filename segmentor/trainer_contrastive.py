@@ -201,9 +201,7 @@ class Trainer(object):
                 else:
                     outputs = self.seg_net(*inputs, with_embed=with_embed)
             else:
-                print("outside contrast section.....", type(inputs))
                 outputs = self.seg_net(*inputs)
-                print("SHAPE AFTER HERE....", type(outputs))
             # self.foward_time.update(time.time() - foward_start_time)
 
             loss_start_time = time.time()
